@@ -17,6 +17,7 @@ import com.autobots.automanager.entidades.Telefone;
 import com.autobots.automanager.modelo.ClienteAtualizador;
 import com.autobots.automanager.modelo.ClienteSelecionador;
 import com.autobots.automanager.modelo.TelefoneAtualizador;
+import com.autobots.automanager.modelo.TelefoneSelecionador;
 import com.autobots.automanager.repositorios.ClienteRepositorio;
 import com.autobots.automanager.repositorios.TelefoneRepositorio;
 
@@ -27,13 +28,16 @@ public class TelefoneControle {
 	@Autowired
 	private ClienteSelecionador selecionador;
 	@Autowired
+	private TelefoneSelecionador selecionadorTelefone;
+	@Autowired
 	private TelefoneRepositorio repositorioTelefone;
+	
 
-	// @GetMapping("/telefone/{id}")
-	// public Cliente obterCliente(@PathVariable long id) {
-	// List<Cliente> clientes = repositorio.findAll();
-	// return selecionador.selecionar(clientes, id);
-	// }
+	@GetMapping("/telefone/{id}")
+	public Telefone obterTelefone(@PathVariable long id) {
+	List<Telefone> telefones = repositorioTelefone.findAll();
+	return selecionadorTelefone.selecionar(telefones, id);
+	}
 
 	@GetMapping("/telefones")
 	public List<Telefone> obterTelefones() {
