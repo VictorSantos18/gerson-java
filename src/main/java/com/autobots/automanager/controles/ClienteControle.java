@@ -41,7 +41,6 @@ public class ClienteControle {
 			return resposta;
 		}
 	}
-
 	@GetMapping("/clientes")
 	public ResponseEntity<List<Cliente>> obterClientes() {
 		List<Cliente> clientes = repositorio.findAll();
@@ -55,7 +54,7 @@ public class ClienteControle {
 		}
 	}
 
-	@PostMapping("/cliente/cadastro")
+	@PostMapping("/cadastro")
 	public ResponseEntity<?> cadastrarCliente(@RequestBody Cliente cliente) {
 		HttpStatus status = HttpStatus.CONFLICT;
 		if (cliente.getId() == null) {
@@ -65,8 +64,7 @@ public class ClienteControle {
 		return new ResponseEntity<>(status);
 
 	}
-
-	@PutMapping("/cliente/atualizar")
+	@PutMapping("/atualizar")
 	public ResponseEntity<?> atualizarCliente(@RequestBody Cliente atualizacao) {
 		HttpStatus status = HttpStatus.CONFLICT;
 		Cliente cliente = repositorio.getById(atualizacao.getId());
@@ -80,8 +78,7 @@ public class ClienteControle {
 		}
 		return new ResponseEntity<>(status);
 	}
-
-	@DeleteMapping("/cliente/excluir")
+	@DeleteMapping("/excluir")
 	public ResponseEntity<?> excluirCliente(@RequestBody Cliente exclusao) {
 		HttpStatus status = HttpStatus.BAD_REQUEST;
 		Cliente cliente = repositorio.getById(exclusao.getId());
