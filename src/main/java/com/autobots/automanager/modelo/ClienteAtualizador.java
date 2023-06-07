@@ -1,7 +1,9 @@
 package com.autobots.automanager.modelo;
 
-import com.autobots.automanager.entidades.Cliente;
+import org.springframework.stereotype.Component;
 
+import com.autobots.automanager.entidades.Cliente;
+@Component
 public class ClienteAtualizador {
 	private StringVerificadorNulo verificador = new StringVerificadorNulo();
 	private EnderecoAtualizador enderecoAtualizador = new EnderecoAtualizador();
